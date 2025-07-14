@@ -1,0 +1,1 @@
+export const BACKEND_URL ="https://restaurant-reservation-gjkc.onrender.com/api/v1";

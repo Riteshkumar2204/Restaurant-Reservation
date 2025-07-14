@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../utils/utils";
 
 const Reservation = () => {
   const [firstName, setFirstName] = useState("");
@@ -19,7 +20,8 @@ const Reservation = () => {
     try {
       const { data } = await axios.post(
         // "http://localhost:4000/api/v1/reservation/send",
-         "https://restaurant-reservation-gjkc.onrender.com/api/v1/reservation/send",
+        //  `https://restaurant-reservation-gjkc.onrender.com/api/v1/reservation/send`,
+         `${BACKEND_URL}/reservation/send`,
         { firstName, lastName, email, phone, date, time },
         {
           headers: {
