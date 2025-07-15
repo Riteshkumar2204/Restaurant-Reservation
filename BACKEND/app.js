@@ -48,7 +48,7 @@ console.log("FRONTEND_URL =", process.env.FRONTEND_URL);
 const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:5173",
   "http://localhost:5173",
-  "https://your-vercel-site.vercel.app", // replace with your actual vercel domain
+  "https://restaurant-reservation-lyart.vercel.app/", // replace with your actual vercel domain
 ];
 
 // ✅ CORS setup with dynamic origin checking
