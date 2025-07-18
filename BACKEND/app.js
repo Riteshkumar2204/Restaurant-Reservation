@@ -45,10 +45,16 @@ const app = express();
 console.log("FRONTEND_URL =", process.env.FRONTEND_URL);
 
 // ✅ Allow multiple known frontend origins
+// const allowedOrigins = [
+//   process.env.FRONTEND_URL || "http://localhost:5173",
+//   "http://localhost:5173",
+//   "https://restaurant-reservation-lyart.vercel.app/", // replace with your actual vercel domain
+// ];
 const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:5173",
   "http://localhost:5173",
-  "https://restaurant-reservation-lyart.vercel.app/", // replace with your actual vercel domain
+  "https://restaurant-reservation-lyart.vercel.app",
+  "https://your-backend.onrender.com", // if you need self-calling APIs
 ];
 
 // ✅ CORS setup with dynamic origin checking
@@ -58,12 +64,14 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.log("Blocked by CORS:", origin);
         callback(new Error("CORS Error: Origin not allowed -> " + origin));
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
+
 );
 
 // ✅ Express parsers
